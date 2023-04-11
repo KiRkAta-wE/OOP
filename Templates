@@ -1,0 +1,34 @@
+template <typename T>
+class A
+{
+public:
+    T value;
+public:
+    A(T x) : value(x)
+    {
+    }
+    void read()
+    {
+        std::cin >> value;
+    }
+    void print()
+    {
+        std::cout << value << std::endl;
+    }
+    friend std::istream& operator>>(std::istream& is, A& val)
+    {
+        T c;
+        is >> c;
+        val.value = c;
+        return is;
+    }
+};
+template <typename T>
+class B : public A<T> {
+private:
+    T val;
+public:
+    B(T y) : val(y), A<T>(T x)
+    {
+    }
+};
